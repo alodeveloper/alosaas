@@ -69,7 +69,7 @@ return [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
             'database' => env('DB_DATABASE', 'homestead'),
-            'username' => env('DB_USERNAME', 'alopgserver'),
+            'username' => env('DB_USERNAME', 'homestead'),
             'password' => env('DB_PASSWORD', 'aloserver@123'),
             'charset'  => 'utf8',
             'prefix'   => '',

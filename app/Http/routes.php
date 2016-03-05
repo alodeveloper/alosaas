@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +23,27 @@ Route::get('/', function () {
 |
 */
 
+Route::bind('accounts', function($subdomain) {
+  return App\Account::where('subdomain', $subdomain)->first();
+});
 
 Route::group(['middleware' => 'web'], function () {
 
-  Route::auth();
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::auth();
+    Route::group(['middleware' => 'auth'], function() {
+      Route::get('/account/switch', 'AccountController@switch');
+      Route::get('/account/register', 'AccountController@create');
+      Route::post('/account/register', 'AccountController@store');
+
+      Route::group(['prefix' => 'accounts/{accounts}'], function () {
+      //Route::group(['domain' => '{accounts}.alotracker.dev'], function() {
+        Route::get('/', 'AccountController@dashboard');
+        Route::resource('user', 'UserController');
+      });
+    });
 });
 
 Event::listen("illuminate.query", function($query, $bindings, $time, $name) {

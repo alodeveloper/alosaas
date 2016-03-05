@@ -50,10 +50,9 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-        // TODO: implement the subdomain uniquness with accounts table validator separately.
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'subdomain' => 'required|max:255',
+            'subdomain' => 'required|max:100|unique:accounts',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);

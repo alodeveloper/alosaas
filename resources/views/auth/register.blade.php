@@ -29,9 +29,8 @@
 
                             <div class="col-md-6">
                                 <div class="input-group">
-                                  <span class="input-group-addon">http://www.</span>
+                                  <span class="input-group-addon">http://www.alotracker.com/accounts/</span>
                                   <input type="text" class="form-control" name="subdomain" value="{{ old('subdomain') }}">
-                                  <span class="input-group-addon">.alotracker.com</span>
                                 </div>
 
                                 @if ($errors->has('subdomain'))

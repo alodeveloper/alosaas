@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $accounts = $user->accounts;
-        return view('home')->with('accounts', $accounts);
+        $memberships = $user->memberships()->with('account')->get();
+        return view('home')->with('memberships', $memberships);
     }
 }
