@@ -29,4 +29,14 @@ class AccountMembershipTest extends TestCase
         $this->asserEquals(count($user->memberships), 1);
 
     }
+
+    public function testGetAccountsForUser()
+    {
+        $account = App\Account::where('subdomain', 'pulsar')->first();
+
+        $user = $account->owner();
+
+        Auth::login($user);
+
+    }
 }

@@ -54,7 +54,7 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function switch(Request $request)
+    public function change(Request $request)
     {
         $user = $request->user();
         $memberships = $user->memberships()->with('account')->get();

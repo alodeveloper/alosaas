@@ -7,25 +7,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(App\Account $account, Request $request)
     {
-        $user = $request->user();
-        $memberships = $user->memberships()->with('account')->get();
-        return view('home')->with('memberships', $memberships);
+      dd($account);
+      $user = $request->user();
+      $memberships = $user->memberships()->with('account')->get();
+      return view('home')->with('memberships', $memberships);
     }
 }

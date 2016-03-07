@@ -11,9 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <!-- Styles
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+    {{--<link href="{{ elixir('css/app.css') }}" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen" title="no title" charset="utf-8">
 
     <style>
         body {
@@ -26,7 +27,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
 
@@ -47,7 +48,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-home"></i></a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -60,7 +61,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/account/switch') }}"><i class="fa fa-btn fa-chevron-circle-up"></i> Change Account</a></li>
+                                <li><a href="{{ url('/account/change') }}"><i class="fa fa-btn fa-chevron-circle-up"></i> Change Account</a></li>
                                 <li><a href="{{ url('/account/register') }}"><i class="fa fa-btn fa-building-o"></i> Add Account</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                             </ul>
@@ -79,6 +80,6 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    {{--<script src="{{ elixir('js/app.js') }}"></script>--}}
 </body>
 </html>

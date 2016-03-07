@@ -34,7 +34,8 @@ Route::group(['middleware' => 'web'], function () {
     });
     Route::auth();
     Route::group(['middleware' => 'auth'], function() {
-      Route::get('/account/switch', 'AccountController@switch');
+      //Route::get('/home', 'HomeController@index');
+      Route::get('/account/change', 'AccountController@change');
       Route::get('/account/register', 'AccountController@create');
       Route::post('/account/register', 'AccountController@store');
 
