@@ -33,4 +33,9 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough('App\Account', 'App\Membership', 'user_id', 'id');
     }
+
+    public function invitations()
+    {
+      return $this->hasMany('App\Invitation');
+    }
 }

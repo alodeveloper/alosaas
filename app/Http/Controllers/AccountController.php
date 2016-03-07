@@ -58,12 +58,12 @@ class AccountController extends Controller
     {
         $user = $request->user();
         $memberships = $user->memberships()->with('account')->get();
-        return view('home')->with('memberships', $memberships);
+        return view('account.change')->with('memberships', $memberships);
     }
 
-    public function dashboard($account)
+    public function dashboard($account, Request $request)
     {
-        $this->current_account = $account;
+        $request->session()->set('current_account', $account);
         return view('account.dashboard')->with('current_account', $account);
     }
 

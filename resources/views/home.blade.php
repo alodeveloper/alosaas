@@ -8,12 +8,7 @@
                 <div class="panel-heading">Accounts</div>
 
                 <div class="panel-body">
-                    <h3>You have these accounts</h3>
-                    <ul class="nav nav-stacked">
-                      @foreach($memberships as $membership)
-                      <li><a href="{{ url('accounts/'.$membership->account->subdomain) }}">{{ $membership->account->subdomain }} <span class="pull-right">{{ $membership->role }}</span></a></li
-                      @endforeach
-                    </ul>
+                  <h2>Hey you are now logged in!</h2>
                 </div>
             </div>
         </div>

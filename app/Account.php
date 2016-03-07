@@ -30,4 +30,9 @@ class Account extends Model
     {
       return 'accounts/'.$this->subdomain;
     }
+
+    public function invitations()
+    {
+      return $this->hasMany('App\Invitation');
+    }
 }

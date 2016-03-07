@@ -42,6 +42,8 @@ Route::group(['middleware' => 'web'], function () {
       Route::group(['prefix' => 'accounts/{accounts}'], function () {
       //Route::group(['domain' => '{accounts}.alotracker.dev'], function() {
         Route::get('/', 'AccountController@dashboard');
+        Route::get('/invite/create', 'InvitationController@create');
+        Route::post('/invite', 'InvitationController@store');
         Route::resource('user', 'UserController');
       });
     });
