@@ -63,8 +63,8 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/account/change') }}"><i class="fa fa-btn fa-chevron-circle-up"></i> Change Account</a></li>
                                 <li><a href="{{ url('/account/register') }}"><i class="fa fa-btn fa-building-o"></i> Add Account</a></li>
-                                @if(Session::has('current_account'))
-                                  <li><a href="{{ url('user') }}"><i class="fa fa-btn fa-users"></i> Collaborators</a></li>
+                                @if(Session::has('currentAccount'))
+                                  <li><a href="{{ url('users') }}"><i class="fa fa-btn fa-users"></i> Collaborators</a></li>
                                 @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                             </ul>

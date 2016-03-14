@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,15 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
+    * The subscriber classes to register.
+    *
+    * @var array
+    */
+    protected $subscribe = [
+        //'App\Listeners\UserEventListener',
+    ];
+
+    /**
      * Register any other events for your application.
      *
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
@@ -28,6 +38,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot($events);
 
-        //
+        Event::subscribe('App\Listeners\UserEventListener');
     }
 }

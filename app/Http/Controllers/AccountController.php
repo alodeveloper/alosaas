@@ -15,7 +15,7 @@ class AccountController extends Controller
 
     public function create()
     {
-        return view('account.register');
+      return view('account.register');
     }
 
     /**
@@ -23,30 +23,30 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $datas = $request->all();
-        $user = $request->user();
-        $validator = Validator::make($datas, [
-          'subdomain' => 'required|max:100|unique:accounts'
-        ]);
+      $datas = $request->all();
+      $user = $request->user();
+      $validator = Validator::make($datas, [
+        'subdomain' => 'required|max:100|unique:accounts'
+      ]);
 
-        if($validator->fails()) {
-          return back()
-                    ->withErrors($validator)
-                    ->withInput();
-        } else {
-          $account = new Account;
-          $account->subdomain = $datas['subdomain'];
-          $account->save();
+      if($validator->fails()) {
+        return back()
+                  ->withErrors($validator)
+                  ->withInput();
+      } else {
+        $account = new Account;
+        $account->subdomain = $datas['subdomain'];
+        $account->save();
 
-          $membership = new Membership;
-          $membership->user_id = $user->id;
-          $membership->role = 'owner';
+        $membership = new Membership;
+        $membership->user_id = $user->id;
+        $membership->role = 'owner';
 
-          $account->memberships()->save($membership);
-          $request->session()->flash('success', 'Account created successfully...');
-        }
+        $account->memberships()->save($membership);
+        $request->session()->flash('success', 'Account created successfully...');
+      }
 
-        return redirect('home');
+      return redirect('home');
     }
 
     /**
@@ -56,15 +56,28 @@ class AccountController extends Controller
      */
     public function change(Request $request)
     {
-        $user = $request->user();
-        $memberships = $user->memberships()->with('account')->get();
-        return view('account.change')->with('memberships', $memberships);
+      $user = $request->user();
+      $memberships = $user->memberships()->with('account')->get();
+      return view('account.change')->with('memberships', $memberships);
     }
 
-    public function dashboard($account, Request $request)
+    public function switchAccount($subdomain, Request $request)
     {
-        $request->session()->set('current_account', $account);
-        return view('account.dashboard')->with('current_account', $account);
+      $user = $request->user();
+      $currentAccount = $user->accounts()->where('subdomain', $subdomain)->first();
+
+      if($currentAccount) {
+        $request->session()->put('currentAccount', $currentAccount);
+        return redirect('dashboard');
+      }
+      return redirect('/');
+    }
+
+    public function dashboard(Request $request)
+    {
+      //$request->session()->put('currentAccount', $account);
+      $currentAccount = $request->session()->get('currentAccount');
+      return view('account.dashboard')->with('currentAccount', $currentAccount);
     }
 
 }
