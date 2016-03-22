@@ -1,0 +1,118 @@
+/* dropdown extra styles */
+@media (min-width: 768px) {
+  .navbar {
+    .dropdown .dropdown-menu {
+      top: 100%;
+    }
+  }
+  .navbar-right .dropdown .dropdown-menu::before {
+    right: 14px;
+    left: auto;
+  }
+}
+.dropdown-lg {
+  .dropdown-menu {
+    min-width: 180px;
+  }
+  .dropdown-menu > li > a {
+    padding: 10px 15px;
+  }
+  .dropdown-menu > li > a > .icon {
+    font-size: 18px;
+    line-height: 2;
+    color: $brand-primary;
+    margin-right: 7px;
+  }
+}
+.dropdown {
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 14px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #fff;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+  .dropdown-menu {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 130%;
+    right: 3px;
+    z-index: 9999;
+    line-height: 1.25;
+    background-color: rgba(255,255,255,1);
+    border: none;
+    @include border-radius(4px);
+    @include box-shadow(0 2px 18px rgba(0, 0, 0, 0.2));
+  }
+  .dropdown-menu>li>a {
+    line-height: 2;
+  }
+}
+/* Button Styles */
+.btn {
+  @include make-it-uppercase;
+}
+.btn-lg.round {
+  @include border-radius(24px);
+}
+.btn.outline {
+  background: none;
+}
+.btm-default.outline {
+  border: 2px solid $btn-default-border;
+  color: $btn-default-border;
+}
+.btn-default.outline:hover, .btn-default.outline:focus, .btn-default.outline:active, .btn-default.outline.active, .open > .dropdown-toggle.btn-default {
+  color: $btn-default-border;
+  border-color: $btn-default-border;
+}
+.btn-default.outline:active, .btn-default.outline.active {
+  border-color: $btn-default-border;
+  color: $btn-default-border;
+  @include box-shadow(none);
+}
+
+.btn-primary.outline {
+  border: 1px solid $btn-primary-border;
+  color: $btn-primary-border;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+  color: $btn-primary-bg;
+  border-color: $btn-primary-bg;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+  border-color: $btn-primary-border;
+  color: $btn-primary-border;
+  @include box-shadow(none);
+}
+
+/* Modal styles */
+.modal-backdrop.in {
+  opacity: .9;
+  filter: alpha(opacity=90);
+}
+.modal-backdrop {
+  background-color: #fff;
+}
+.modal-header .close {
+  margin-top: -50px;
+  margin-right: -50px;
+  width: 30px;
+  height: 30px;
+  @include border-radius(50%);
+}
+.modal-content {
+  @include box-shadow(0 2px 8px rgba(33,33,33,0.1));
+  border: 1px solid #e5e5e5;
+}
+
+/* form control */
+.form-control:focus {
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 1px rgba(102, 175, 233, 0.6));
+}

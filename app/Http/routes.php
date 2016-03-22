@@ -45,13 +45,13 @@ Route::group(['middleware' => 'web'], function () {
       Route::get('/account/register', 'AccountController@create');
       Route::post('/account/register', 'AccountController@store');
 
-      Route::group(['middleware' => 'account.verify'], function () { //, 'prefix' => 'accounts/{accounts}'
+      //Route::group(['middleware' => 'account.verify'], function () { //, 'prefix' => 'accounts/{accounts}'
       //Route::group(['domain' => '{accounts}.alotracker.dev'], function() {
         Route::get('/dashboard', 'AccountController@dashboard');
         Route::get('/invite/create', 'InvitationController@create');
         Route::post('/invite', 'InvitationController@store');
         Route::resource('users', 'UserController');
-      });
+      //});
     });
 });
 
