@@ -35,11 +35,6 @@ class InvitationController extends Controller
         $invitation->user_id = $user->id;
         $invitation->invitation_code = md5(uniqid(time(), true));
         $invitation->save();
-        //Event::fire(new InvitationSentEvent($invitation));
-
-          Mail::send('emails.welcome', [], function ($message) {
-            $message->to('support@alobin.com');
-          });
         return redirect('users');
       } else {
         $request->session()->flash('danger', 'User already member of this account');
@@ -48,5 +43,10 @@ class InvitationController extends Controller
     } else {
       return back()->withErrors($validator)->withInput();
     }
+  }
+
+  public function accept(Request $request)
+  {
+    // TODO: get the code from request, get the invitation with the code, if invitation available then check for the expiry date, if everything okay, then
   }
 }

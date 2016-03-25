@@ -75,7 +75,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // get the profile of the user and show the recent history of user
+        // TODO:get the profile of the user and show the recent history of user
     }
 
     /**

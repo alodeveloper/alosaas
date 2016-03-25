@@ -37,5 +37,5 @@ class Invitation extends Model
 Invitation::created(function($invitation) {
   // send mail to invited email address with url for logging in.
 
-  //Event::fire(new InvitationSentEvent($invitation));
+  Event::fire(new InvitationSentEvent($invitation));
 });

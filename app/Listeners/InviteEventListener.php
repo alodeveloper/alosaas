@@ -30,7 +30,7 @@ class InviteEventListener
    */
   public function handle(InvitationSentEvent $event)
   {
-    Mail::send('emails.welcome', [], function ($message) {
+    Mail::send('emails.welcome', ['invitation' => $event->invitation], function ($message) {
       $message->to('support@alobin.com');
     });
   }
