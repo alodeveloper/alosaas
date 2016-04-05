@@ -36,6 +36,14 @@ class User extends Authenticatable
 
     public function invitations()
     {
-      return $this->hasMany('App\Invitation');
+        return $this->hasMany('App\Invitation');
+    }
+
+    public function scopeFindByEmail($query, $email)
+    {
+        if($email != '') {
+            return $query->where('email', $email)->first();
+        }
+        return false;
     }
 }

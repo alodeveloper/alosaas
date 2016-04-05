@@ -4,6 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Event;
 use App\Events\InvitationSentEvent;
+use Carbon\Carbon;
 
 class Invitation extends Model
 {
@@ -31,6 +32,14 @@ class Invitation extends Model
       $query = $query->where('account_id', $account_id);
     }
     return $query->whereNull('invitation_accepted_at');
+  }
+
+  public function scopeOfCode($query, $code)
+  {
+    if($code != '') {
+      return $query->where('invitation_code', $code)->where('invitation_expire_at', '<', Carbon::now())->whereNull('invitation_accepted_at');
+    }
+    return false;
   }
 }
 
