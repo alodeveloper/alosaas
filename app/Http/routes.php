@@ -48,15 +48,16 @@ Route::group(['middleware' => 'web'], function () {
       //Route::group(['middleware' => 'account.verify'], function () { //, 'prefix' => 'accounts/{accounts}'
       //Route::group(['domain' => '{accounts}.alotracker.dev'], function() {
         Route::get('/dashboard', 'AccountController@dashboard');
-        Route::get('/invite/create', 'InvitationController@create');
-        Route::post('/invite', 'InvitationController@store');
-        Route::get('/invite/accept', 'InvitationController@accept');
+        //Route::get('/invite/create', 'InvitationController@create');
+        //Route::post('/invite', 'InvitationController@store');
+        //Route::get('/invite/accept', 'InvitationController@accept');
         Route::resource('users', 'UserController');
       //});
     });
 });
 
 Event::listen("illuminate.query", function($query, $bindings, $time, $name) {
+  dd(App::environment());
       if (App::environment() == "development" || App::environment() == "local")
       {
           \Log::info("query executing ".$query . "\n");

@@ -21,17 +21,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($users as $user)
+                        @foreach($memberships as $membership)
                         <tr>
-                          <td>{{ $user->name }}</td>
-                          <td>role</td>
+                          <td>{{ $membership->user->name }}</td>
+                          <td>{{ $membership->role }}</td>
                         </tr>
                         @endforeach
                       </tbody>
                     </table>
                   </div>
                   <div class="pull-right">
-                    <a href="{{ url('invite/create') }}" class="btn btn-primary">Add Member</a>
+                    <a href="{{ url('users/create') }}" class="btn btn-primary">Add Member</a>
                   </div>
                 </div>
             </div>

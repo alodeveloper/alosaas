@@ -2,6 +2,7 @@
 namespace App\Listeners;
 
 use Session;
+use AccountUtil;
 
 class UserEventListener {
 
@@ -11,7 +12,10 @@ class UserEventListener {
      */
     public function onUserLogin($event)
     {
-      Session::put('currentAccounts', $event->user->accounts);
+      if(count($event->user->accounts) > 0) {
+        Session::put('currentAccounts', $event->user->accounts);
+        AccountUtil::current($event->user->accounts->first());
+      }
     }
 
     /**

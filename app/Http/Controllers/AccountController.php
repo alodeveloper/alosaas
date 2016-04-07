@@ -46,7 +46,7 @@ class AccountController extends Controller
         $request->session()->flash('success', 'Account created successfully...');
       }
 
-      return redirect('home');
+      return redirect('dashboard');
     }
 
     /**

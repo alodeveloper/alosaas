@@ -19,8 +19,11 @@ class Account
     return url($url, $parameters, $secure);
   }
 
-  public function current()
+  public function current($currentAccount = false)
   {
+    if($currentAccount) {
+      Session::put('currentAccount', $currentAccount);  
+    }
     return Session::get('currentAccount');
   }
 
